@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  :root {
+    --primary-color: #2563eb;
+    --secondary-color: #64748b;
+  }
+
+  body {
+    @apply text-black bg-slate-50/50 antialiased transition-colors duration-300;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  .dark body {
+    @apply text-slate-200 bg-[#0f172a];
+  }
+}
+
+@layer components {
+  .admin-card {
+    @apply bg-white border border-slate-200 rounded-lg shadow-sm transition-colors text-black;
+    background-color: var(--popup-color, white);
+  }
+  .dark .admin-card {
+    @apply bg-[#1e293b] border-slate-800 text-slate-200;
+  }
+
+  .admin-btn-primary {
+    @apply px-4 py-2 text-white text-sm font-semibold rounded-md transition-colors shadow-sm cursor-pointer;
+    background-color: var(--primary-color);
+  }
+  .admin-btn-primary:hover {
+    filter: brightness(1.1);
+  }
+
+  .admin-btn-secondary {
+    @apply px-4 py-2 bg-white text-slate-900 text-sm font-semibold border border-slate-300 rounded-md hover:bg-slate-50 transition-colors shadow-sm cursor-pointer;
+  }
+  .dark .admin-btn-secondary {
+    @apply bg-slate-800 text-slate-100 border-slate-700 hover:bg-slate-700 cursor-pointer;
+  }
+
+  a, button {
+    @apply cursor-pointer;
+  }
+
+  input[type="submit"], input[type="button"], input[type="checkbox"], input[type="radio"] {
+    @apply cursor-pointer;
+  }
+
+  .admin-input {
+    @apply w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm outline-none transition-all placeholder:text-slate-500 text-slate-900;
+  }
+  .admin-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 1px var(--primary-color);
+  }
+  .dark .admin-input {
+    @apply bg-slate-900 border-slate-700 text-slate-100;
+  }
+
+  .admin-table {
+    @apply w-full text-left text-sm border-collapse;
+  }
+
+  .admin-table th {
+    @apply px-4 py-3 bg-slate-50 border-b border-slate-200 font-bold text-slate-900 transition-colors uppercase tracking-wider;
+  }
+  .dark .admin-table th {
+    @apply bg-slate-900 border-slate-800 text-slate-300;
+  }
+
+  .admin-table td {
+    @apply px-4 py-3 border-b border-slate-100 text-slate-900 font-medium transition-colors;
+  }
+  .dark .admin-table td {
+    @apply border-slate-800 text-slate-300;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
